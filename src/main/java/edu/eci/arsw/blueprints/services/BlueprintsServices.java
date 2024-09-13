@@ -13,6 +13,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,9 +24,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class BlueprintsServices {
    
+
+    BlueprintsPersistence bpp;
+
     @Autowired
-    BlueprintsPersistence bpp=null;
-    
+    public BlueprintsServices(@Qualifier("inMemory") BlueprintsPersistence bpp) {
+        this.bpp = bpp;
+    }
+
     public void addNewBlueprint(Blueprint bp){
         
     }
@@ -41,7 +48,7 @@ public class BlueprintsServices {
      * @throws BlueprintNotFoundException if there is no such blueprint
      */
     public Blueprint getBlueprint(String author,String name) throws BlueprintNotFoundException{
-        throw new UnsupportedOperationException("Not supported yet."); 
+        return bpp.getBlueprint(author,name);
     }
     
     /**
@@ -51,7 +58,7 @@ public class BlueprintsServices {
      * @throws BlueprintNotFoundException if the given author doesn't exist
      */
     public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException{
-        throw new UnsupportedOperationException("Not supported yet."); 
+        return bpp.getBlueprintsByAuthor(author);
     }
     
 }
