@@ -18,7 +18,7 @@ public class Blueprint {
     public Blueprint(String author,String name,Point[] pnts){
         this.author=author;
         this.name=name;
-        points=Arrays.asList(pnts);
+        points=new ArrayList<>(Arrays.asList(pnts));
     }
 
     public Blueprint(String name){
@@ -44,6 +44,8 @@ public class Blueprint {
     public void addPoint(Point p){
         this.points.add(p);
     }
+
+    public void removePoint(Point p){this.points.remove(p);}
 
     @Override
     public String toString() {

@@ -5,16 +5,16 @@
  */
 package edu.eci.arsw.blueprints.services;
 
+import edu.eci.arsw.blueprints.filter.Filter;
 import edu.eci.arsw.blueprints.model.Blueprint;
-import edu.eci.arsw.blueprints.model.Point;
+
 import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
 import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
-import java.util.LinkedHashMap;
-import java.util.Map;
+
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,15 +26,16 @@ public class BlueprintsServices {
    
 
     BlueprintsPersistence bpp;
+    Filter filter;
 
     @Autowired
-    public BlueprintsServices(@Qualifier("inMemory") BlueprintsPersistence bpp) {
+    public BlueprintsServices(@Qualifier("inMemory") BlueprintsPersistence bpp,
+                              @Qualifier("sub") Filter filter) {
+
         this.bpp = bpp;
+        this.filter = filter;
     }
 
-    public void addNewBlueprint(Blueprint bp){
-        
-    }
     
     public Set<Blueprint> getAllBlueprints(){
         return null;
@@ -60,5 +61,16 @@ public class BlueprintsServices {
     public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException{
         return bpp.getBlueprintsByAuthor(author);
     }
+
+    /**
+     *
+     * @param bp bluerprint that you wish to filter
+     * @return blueprint filtered
+     */
+    public Blueprint filterBlueprint(Blueprint bp) {
+        return filter.filterBlueprint(bp);
+    }
+
+
     
 }
