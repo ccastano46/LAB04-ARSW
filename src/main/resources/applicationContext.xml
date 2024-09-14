@@ -6,9 +6,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 ">
-    <bean id="blueprintServices" class="edu.eci.arsw.blueprints.services.BlueprintsServices"/>
-    <bean id="inMemory" class="edu.eci.arsw.blueprints.persistence.impl.InMemoryBlueprintPersistence"/>
-
     <context:component-scan base-package="edu.eci.arsw.blueprints" />
 
 </beans>

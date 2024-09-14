@@ -1,5 +1,4 @@
-package main;
-
+package edu.eci.arsw.blueprints;
 import edu.eci.arsw.blueprints.services.BlueprintsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -19,4 +18,6 @@ public class BlueprintsApp {
     public static void main(String[] args) {
         SpringApplication.run(BlueprintsApp.class, args);
     }
+
+
 }
